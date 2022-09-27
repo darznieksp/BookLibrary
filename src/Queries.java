@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Querries {
+public class Queries {
 
     public static List<Book> getBooks (Connection conn){
         List<Book> bookList = new ArrayList<>();
