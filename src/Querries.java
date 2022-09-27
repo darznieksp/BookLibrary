@@ -16,8 +16,8 @@ public class Querries {
         int genreID;
 
         try {
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM books");
+            Statement stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM books");
 
             while (resultSet.next()){
                 bookID = resultSet.getInt("BookId");
@@ -28,6 +28,8 @@ public class Querries {
 
                 bookList.add(new Book(bookID, name, description, authorID, genreID));
             }
+            resultSet.close();
+            stmt.close();
         } catch (Exception e){
             System.out.println(e);
         }
@@ -57,6 +59,8 @@ public class Querries {
             preparedStmt.executeUpdate();
 
             System.out.println("Book successfully added!");
+
+            preparedStmt.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -87,6 +91,7 @@ public class Querries {
                     preparedStmt.setString(1, strInput);
                     preparedStmt.setInt(2, bookID);
 
+                    preparedStmt.close();
                     System.out.println("BookName updated!");
                 } catch (Exception e){
                     System.out.println(e);
@@ -102,6 +107,7 @@ public class Querries {
                     preparedStmt.setString(1, strInput);
                     preparedStmt.setInt(2, bookID);
 
+                    preparedStmt.close();
                     System.out.println("Description updated!");
                 } catch (Exception e){
                     System.out.println(e);
@@ -117,6 +123,7 @@ public class Querries {
                     preparedStmt.setInt(1, intInput);
                     preparedStmt.setInt(2, bookID);
 
+                    preparedStmt.close();
                     System.out.println("AuthorID updated!");
                 } catch (Exception e){
                     System.out.println(e);
@@ -132,6 +139,7 @@ public class Querries {
                     preparedStmt.setInt(1, intInput);
                     preparedStmt.setInt(2, bookID);
 
+                    preparedStmt.close();
                     System.out.println("GenreID updated!");
                 } catch (Exception e){
                     System.out.println(e);
@@ -155,6 +163,7 @@ public class Querries {
             preparedStmt.setInt(1, bookID);
             preparedStmt.executeUpdate();
 
+            preparedStmt.close();
             System.out.println("Book with ID: " + bookID + " successfully deleted!");
         } catch (Exception e){
             System.out.println(e);
