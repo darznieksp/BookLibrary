@@ -22,12 +22,14 @@ public class Menu {
                     Querries.addBook(conn);
                     break;
                 case "2":
+                    Querries.editBook(conn);
+                case "3":
                     showBooks(conn);
                     break;
-                case "3":
+                case "4":
                     Querries.deleteBook(conn);
                     break;
-                case "4":
+                case "5":
                     System.out.println("---------------");
                     System.out.println("Exiting...");
                     terminalWorking = false;
