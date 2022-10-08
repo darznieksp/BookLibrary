@@ -19,15 +19,17 @@ public class Menu {
 
             switch (input){
                 case "1":
-                    Querries.addBook(conn);
+                    Queries.addBook(conn);
                     break;
                 case "2":
+                    Queries.editBook(conn);
+                case "3":
                     showBooks(conn);
                     break;
-                case "3":
-                    Querries.deleteBook(conn);
-                    break;
                 case "4":
+                    Queries.deleteBook(conn);
+                    break;
+                case "5":
                     System.out.println("---------------");
                     System.out.println("Exiting...");
                     terminalWorking = false;
@@ -42,7 +44,7 @@ public class Menu {
 
     private static void showBooks(Connection conn){
 
-        List<Book> bookList = Querries.getBooks(conn);
+        List<Book> bookList = Queries.getBooks(conn);
         for (Book book : bookList){
             System.out.println(book);
         }
