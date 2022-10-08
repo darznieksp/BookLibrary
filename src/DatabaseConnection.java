@@ -18,6 +18,7 @@ public class DatabaseConnection {
         } catch (Exception e){
             System.out.println(e);
         }
+        System.out.println();
     }
 
     public Connection getConnection(){
