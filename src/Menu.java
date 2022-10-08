@@ -14,29 +14,33 @@ public class Menu {
             System.out.println("2. Edit book");
             System.out.println("3. Show books");
             System.out.println("4. Delete book");
-            System.out.println("5. Exit");
+            System.out.println("5. Add multiple books");
+            System.out.println("6. Exit");
             System.out.print("Enter number: ");
             String input = sc.nextLine();
 
             int bookID;
+            String name;
+            String description;
+            int author;
+            int genre;
+
             switch (input){
                 case "1":
                     System.out.println("---------------");
                     System.out.print("Name of the book: ");
-                    String name = sc.nextLine();
+                    name = sc.nextLine();
                     System.out.print("Description of book: ");
-                    String description = sc.nextLine();
+                    description = sc.nextLine();
                     System.out.print("Author of the book: ");
-                    int author = sc.nextInt();
+                    author = sc.nextInt();
                     System.out.print("Genre of the book: ");
-                    int genre = sc.nextInt();
+                    genre = sc.nextInt();
 
                     Queries.addBook(conn, name, description, author, genre);
                     break;
                 case "2":
                     String strInput;
-                    int intInput;
-
                     System.out.print("Enter BookID: ");
                     bookID = sc.nextInt();
 
@@ -56,6 +60,28 @@ public class Menu {
                     Queries.deleteBook(conn, bookID);
                     break;
                 case "5":
+                    int x = 0;
+                    System.out.print("How many books will be added? ");
+                    int intInput = sc.nextInt();
+                    sc.nextLine();
+                    while(x < intInput){
+                        System.out.println("---------------");
+                        System.out.print("Name of the book: ");
+                        name = sc.nextLine();
+                        System.out.print("Description of book: ");
+                        description = sc.nextLine();
+                        System.out.print("Author of the book: ");
+                        author = sc.nextInt();
+                        System.out.print("Genre of the book: ");
+                        genre = sc.nextInt();
+                        sc.nextLine();
+
+                        Queries.addBook(conn, name, description, author, genre);
+
+                        x++;
+                    }
+                    break;
+                case "6":
                     System.out.println("---------------");
                     System.out.println("Exiting...");
                     terminalWorking = false;
