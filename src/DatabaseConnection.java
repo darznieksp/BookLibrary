@@ -3,7 +3,7 @@ import java.sql.*;
 public class DatabaseConnection {
 
     private final String userName = "root";
-    private final String password = "xxxxxx";
+    private final String password = "12Peecha95";
     private final String db = "jdbc:mysql://localhost:3306/library";
 
     private Connection connection = null;
@@ -18,7 +18,6 @@ public class DatabaseConnection {
         } catch (Exception e){
             System.out.println(e);
         }
-        System.out.println();
     }
 
     public Connection getConnection(){

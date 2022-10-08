@@ -36,18 +36,7 @@ public class Queries {
         return bookList;
     }
 
-    public static void addBook (Connection conn){
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("---------------");
-        System.out.print("Name of the book: ");
-        String name = sc.nextLine();
-        System.out.print("Description of book: ");
-        String description = sc.nextLine();
-        System.out.print("Author of the book: ");
-        int author = sc.nextInt();
-        System.out.print("Genre of the book: ");
-        int genre = sc.nextInt();
+    public static void addBook (Connection conn, String name, String description, int author, int genre){
 
         try {
             String qry = "INSERT INTO books (BookName, Description, AuthorId, GenreID)" + "VALUES (?, ?, ?, ?)";
@@ -66,20 +55,9 @@ public class Queries {
         }
     }
 
-    public static void editBook(Connection conn){
+    public static void editBook(Connection conn, int bookID, String strInput){
         Scanner sc = new Scanner(System.in);
-        String strInput;
         int intInput;
-
-        System.out.print("Enter BookID: ");
-        int bookID = sc.nextInt();
-
-        System.out.println("1. Edit book name");
-        System.out.println("2. Edit description");
-        System.out.println("3. Edit author");
-        System.out.println("4. Edit genre");
-        System.out.print("Enter number: ");
-        strInput = sc.nextLine();
 
         switch(strInput){
             case "1":
@@ -152,11 +130,8 @@ public class Queries {
         }
     }
 
-    public static void deleteBook (Connection conn){
-        Scanner sc = new Scanner(System.in);
+    public static void deleteBook (Connection conn, int bookID){
 
-        System.out.print("Enter book ID: ");
-        int bookID = sc.nextInt();
         try {
             String qry = "DELETE FROM books WHERE BookId = ?";
             PreparedStatement preparedStmt = conn.prepareStatement(qry);
