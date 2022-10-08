@@ -3,7 +3,7 @@ import java.sql.*;
 public class DatabaseConnection {
 
     private final String userName = "root";
-    private final String password = "12Peecha95";
+    private final String password = "xxxx";
     private final String db = "jdbc:mysql://localhost:3306/library";
 
     private Connection connection = null;
